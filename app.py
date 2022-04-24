@@ -113,36 +113,36 @@ if button and imagem_referencia is not None:
     with st.spinner('Please Wait'):
     
 
-        #try:
+        try:
 
-        if imagem_referencia.type == "application/pdf":
-            images = pdf2image.convert_from_bytes(imagem_referencia.read(),800)
-            for page in images:
-                page.save('recent_upload.jpg', 'JPEG')
+            if imagem_referencia.type == "application/pdf":
+                images = pdf2image.convert_from_bytes(imagem_referencia.read(),800)
+                for page in images:
+                    page.save('recent_upload.jpg', 'JPEG')
 
-            a = extract_data_ocr.Extract_data_OCR('recent_upload.jpg')
-            r = a.get_data()
-            st.write('Extracted results')
-            st.json(r)
+                a = extract_data_ocr.Extract_data_OCR('recent_upload.jpg')
+                r = a.get_data()
+                st.write('Extracted results')
+                st.json(r)
 
-            if agree:
-                df = pd.read_csv('data.csv')
-                r_dictionary = pd.DataFrame([r])
-                output = pd.concat([df, r_dictionary], ignore_index=True)
-                output.to_csv('data.csv',index=False)
+                if agree:
+                    df = pd.read_csv('data.csv')
+                    r_dictionary = pd.DataFrame([r])
+                    output = pd.concat([df, r_dictionary], ignore_index=True)
+                    output.to_csv('data.csv',index=False)
 
-                st.success('Data extracted and saved properly')
+                    st.success('Data extracted and saved properly')
 
 
-            else:
-                st.success('Data extracted properly')
+                else:
+                    st.success('Data extracted properly')
 
 
                 
 
 
-        #except:
-            #st.error('Invoice Unkown, Please contact Konta.tech for better service ')
+        except:
+            st.error('Invoice Unkown, Please contact Konta.tech for better service ')
 
 
 
