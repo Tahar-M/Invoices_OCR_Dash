@@ -46,7 +46,7 @@ data2 = data2.reset_index()
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Nombre de fournisseurs", f"{len(set(data.N_tva))}")
-col2.metric("Nombre de Factures", f"{len(set(data.N_facture))}")
+col2.metric("Nombre de Factures", f"{len((data.N_facture))}")
 col3.metric("Total ", f"{round(data.TTC.sum(),2)} €")
 
 
