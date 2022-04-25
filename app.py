@@ -22,11 +22,13 @@ cl1, cl2 = st.columns(2)
 
 with cl1:
     start_date = st.date_input('From',value = min(data.index), min_value= min(data.index),  max_value=max(data.index))
-    st.success(f'Start date from :  {start_date}')
+    
 
 with cl2:
     end_date = st.date_input('Until',value = max(data.index), min_value= start_date,  max_value=max(data.index))
-    st.success(f'until  :  {end_date}')
+
+
+st.success(f'Période  :  Du {start_date} au {end_date}')
 
 
 data = data.loc[start_date:end_date]
@@ -52,7 +54,7 @@ fig = px.pie(data, values='TTC', names='fournisseur', color='N_tva',hole=0.5)
 
 fig.update_layout(
     title={
-        'text': "Repartion de depenses par Fournisseurs ",
+        'text': "Repartion des depenses par Fournisseurs ",
         'x':0.45,
         'xanchor': 'center',
         'yanchor': 'top'})
@@ -82,6 +84,26 @@ fig2.update_layout(
         'yanchor': 'top'})
 st.plotly_chart(fig2, use_container_width=True)
 
+fig3 = px.box(data,x='fournisseur', y="TTC", color='fournisseur',labels={
+                     "TTC": "TTC en €",
+                     "fournisseur": "Fournisseur",
+                     "fournisseur": "Fournisseur"})
+
+for s in data.fournisseur.unique():
+    fig3.add_annotation(x=s,
+                       y = data[data['fournisseur']==s]['TTC'].max(),
+                       text = 'count factures = ' +str(len(data[data['fournisseur']==s]['TTC'])),
+                       yshift = 10,
+                       showarrow = False
+                      )
+fig3.update_layout(
+    title={
+        'text': "Stats par Fournisseur ",
+        'x':0.45,
+        'xanchor': 'center',
+        'yanchor': 'top'})
+
+st.plotly_chart(fig3, use_container_width=True)
 
 with st.expander("Data Sheet"):
 
@@ -124,7 +146,7 @@ if button and imagem_referencia is not None:
                 r = a.get_data()
                 st.write('Extracted results')
                 st.json(r)
-
+                
                 if agree:
                     df = pd.read_csv('data.csv')
                     r_dictionary = pd.DataFrame([r])
