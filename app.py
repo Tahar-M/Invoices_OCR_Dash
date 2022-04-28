@@ -21,11 +21,11 @@ data= data.set_index('date')
 cl1, cl2 = st.columns(2)
 
 with cl1:
-    start_date = st.date_input('From',value = min(data.index), min_value= min(data.index),  max_value=max(data.index))
+    start_date = st.date_input('Début',value = min(data.index), min_value= min(data.index),  max_value=max(data.index))
     
 
 with cl2:
-    end_date = st.date_input('Until',value = max(data.index), min_value= start_date,  max_value=max(data.index))
+    end_date = st.date_input('Fin',value = max(data.index), min_value= start_date,  max_value=max(data.index))
 
 
 st.success(f'Période  :  Du {start_date} au {end_date}')
@@ -46,7 +46,7 @@ data2 = data2.reset_index()
 col1, col2, col3 = st.columns(3)
 
 col1.metric("Nombre de fournisseurs", f"{len(set(data.N_tva))}")
-col2.metric("Nombre de Factures", f"{len((data.N_facture))}")
+col2.metric("Nombre de Factures", f"{len(set(data.N_facture))}")
 col3.metric("Total ", f"{round(data.TTC.sum(),2)} €")
 
 
@@ -164,7 +164,7 @@ if button and imagem_referencia is not None:
 
 
         except:
-            st.error('Invoice Unkown, Please contact Konta.tech for better service ')
+            st.error('Invoice Unkown, Please contact [Konta.tech](https://konta.tech/) for better service ')
 
 
 
