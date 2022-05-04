@@ -1,4 +1,4 @@
-"""
+
 
 Ce projet est un POC fortement inspiré de [Konta.tech](https://konta.tech/).
 
@@ -51,7 +51,7 @@ On récupere après l'information en appliquant Regex. </p>
 <p> Les données ont été générées aléatoirement en utilisant Python (openpyxl)</p>
 
 <br>
-<br>
+
 
 <h5>Made by : <strong> Tahar Moumen </strong> </h5>
 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong> Email : </strong> tahar.moumen@outlook.com </p>
@@ -63,4 +63,4 @@ On récupere après l'information en appliquant Regex. </p>
 
 
 
-"""
+
