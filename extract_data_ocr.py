@@ -107,10 +107,10 @@ class Extract_data_OCR:
             r = {'date': '/'.join(re.findall(self.p,self.data_dic['date'])),
             'N_tva': re.findall(self.p,self.data_dic['N_tva'])[0],
             'N_facture': (re.findall(self.p,self.data_dic['N_facture'].replace('/',''))[0]),
-            'HT': self.extract_amount_fac(self.data_dic['HT']),
+            'HT': round(self.extract_amount_fac(self.data_dic['HT']),2),
             'Taxe': round(self.extract_amount_fac(self.data_dic['HT'])*0.2,2),
             'TVA': '20.00%',
-            'TTC': self.extract_amount_fac(self.data_dic['TTC'].replace('/','7'))}
+            'TTC': round(self.extract_amount_fac(self.data_dic['TTC'].replace('/','7')),2)}
 
             return r
 
@@ -118,10 +118,10 @@ class Extract_data_OCR:
             r = {'date': '/'.join(re.findall(self.p,self.data_dic['date'])),
             'N_tva': re.findall(self.p,self.data_dic['N_tva'])[0],
             'N_facture': re.findall(self.p,self.data_dic['N_facture'])[0],
-            'HT': self.extract_amount_fac(self.data_dic['HT']),
+            'HT': round(self.extract_amount_fac(self.data_dic['HT']),2),
             'Taxe': round(self.extract_amount_fac(self.data_dic['HT'])*0.2,2),
             'TVA': '20.00%',
-            'TTC': self.extract_amount_fac(self.data_dic['TTC'])}
+            'TTC': round(self.extract_amount_fac(self.data_dic['TTC']),2)}
 
             return r
 
@@ -129,10 +129,10 @@ class Extract_data_OCR:
             r = {'date': '/'.join(re.findall(self.p,self.data_dic['date'])[1:]),
             'N_tva': re.findall(self.p,self.data_dic['N_tva'])[0],
             'N_facture': (re.findall(self.p,self.data_dic['N_facture'].replace('/',''))[0]),
-            'HT': self.extract_amount_fac(self.data_dic['HT']),
+            'HT': round(self.extract_amount_fac(self.data_dic['HT']),2),
             'Taxe': round(self.extract_amount_fac(self.data_dic['HT'])*0.2,2),
             'TVA': '20.00%',
-            'TTC': self.extract_amount_fac(self.data_dic['TTC'])}
+            'TTC': round(self.extract_amount_fac(self.data_dic['TTC']),2)}
 
             return r 
         else:
