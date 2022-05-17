@@ -242,7 +242,7 @@ On récupere après l'information en appliquant Regex. </p>
 
     st.download_button(label="CV Tahar Moumen",
                     data=PDFbyte,
-                    file_name="CV_Tahar_Moumen.pdf",
+                    file_name="CV_Tahar_en.pdf",
                     mime='application/octet-stream')
 
 
