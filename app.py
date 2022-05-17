@@ -237,7 +237,7 @@ On récupere après l'information en appliquant Regex. </p>
 """,unsafe_allow_html=True)
 
 
-    with open("CV_Tahar.pdf", "rb") as pdf_file:
+    with open("CV_Tahar_en.pdf", "rb") as pdf_file:
         PDFbyte = pdf_file.read()
 
     st.download_button(label="CV Tahar Moumen",
